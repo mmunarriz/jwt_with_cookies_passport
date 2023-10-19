@@ -1,0 +1,33 @@
+<main>
+  <section class="py-5 text-center container">
+    <div>
+      <h1>Products</h1>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Codigo</th>
+              <th>Nombre</th>
+              <th>Descripcion</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each productsInCart}}
+              <tr>
+                <td>{{this.product.code}}</td>
+                <td>{{this.product.title}}</td>
+                <td>{{this.product.description}}</td>
+                <td>{{this.product.category}}</td>
+                <td>{{this.product.price}}</td>
+                <td>{{this.quantity}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>

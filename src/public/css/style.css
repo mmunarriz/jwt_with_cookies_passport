@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/* Reseteo */
+* {
+  margin: 0px;
+  padding: 0px; }
+
+/* Tipografía general */
+body {
+  background-color: #cae7fa;
+  font-family: "Lato", sans-serif; }
+  

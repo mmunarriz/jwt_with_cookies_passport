@@ -1,0 +1,44 @@
+<main class="container-fluid mb-5">
+  <h2 class="text-center h2 mt-4 mb-4">Login</h2>
+  <div class="row justify-content-center">
+    <article class="col-md-6 mt-mobile">
+      <div class="col-12 text-center">
+        <a href="/api/sessions/github">
+          <button type="submit" class="btn btn-primary">Entrar con GitHub</button>
+        </a>
+      </div>
+      <form class="row g-3" id="loginForm">
+        <div class="col-12">
+          <label for="email" class="form-label">E-mail</label>
+          <input
+            name="email"
+            type="text"
+            class="form-control"
+            placeholder="Tu Email"
+            autofocus
+            required
+          />
+        </div>
+        <div class="col-12">
+          <label for="password" class="form-label">Contraseña</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="Tu contraseña"
+            required
+          />
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">
+            Enviar Formulario
+          </button>
+        </div>
+      </form>
+      <div class="col-12 mt-1">
+        <p>¿No estás registrado? <a href="/register">Regístrate aquí</a></p>
+      </div>
+    </article>
+  </div>
+</main>
+<script src="/js/login.js"></script>

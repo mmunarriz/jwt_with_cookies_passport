@@ -1,0 +1,42 @@
+<main>
+  <section class="py-5 text-center container">
+    <div>
+      <h1>Bienvenido {{user.name}} ({{user.rol}}) </h1>
+      <h2>Productos</h2>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+              <th>Stock</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each products}}
+              <tr>
+                <td>{{this.code}}</td>
+                <td>{{this.title}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.category}}</td>
+                <td>{{this.price}}</td>
+                <td>{{this.stock}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    {{#if hasPrevPage}}
+      <a href="/products?page={{prevPage}}"><button class="btn btn-primary">Anterior</button></a>
+    {{/if}}
+
+    {{#if hasNextPage}}
+      <a href="/products?page={{nextPage}}"><button class="btn btn-primary">Siguiente</button></a>
+    {{/if}}
+  </section>
+</main>

@@ -1,0 +1,68 @@
+<main class="container-fluid mb-5">
+  <h2 class="text-center h2 mt-4 mb-4">Registro</h2>
+  <div class="row justify-content-center">
+    <article class="col-md-6 mt-mobile">
+      <form class="row g-3" id="registerForm">
+        <div class="col-12">
+          <label for="first_name" class="form-label">Nombre</label>
+          <input
+            name="first_name"
+            type="text"
+            class="form-control"
+            placeholder="Tu nombre"
+            autofocus
+            required
+          />
+        </div>
+        <div class="col-12">
+          <label for="last_name" class="form-label">Apellido</label>
+          <input
+            name="last_name"
+            type="text"
+            class="form-control"
+            placeholder="Tu apellido"
+            required
+          />
+        </div>
+        <div class="col-12">
+          <label for="email" class="form-label">E-mail</label>
+          <input
+            name="email"
+            type="text"
+            class="form-control"
+            placeholder="Tu correo electrónico"
+            required
+          />
+        </div>
+        <div class="col-12">
+          <label for="age" class="form-label">Edad</label>
+          <input
+            name="age"
+            type="number"
+            class="form-control"
+            placeholder="Tu edad"
+          />
+        </div>
+        <div class="col-12">
+          <label for="password" class="form-label">Contraseña</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="Elije una contraseña para este sitio"
+            required
+          />
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">
+            Enviar Formulario
+          </button>
+        </div>
+      </form>
+      <div class="col-12 mt-1">
+        <p>¿Ya tienes una cuenta? <a href="/login">Ingresa aquí</a></p>
+      </div>
+    </article>
+  </div>
+</main>
+<script src="/js/register.js"></script>

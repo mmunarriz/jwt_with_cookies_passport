@@ -1,48 +1,22 @@
 import { Router } from 'express';
 import jwt from 'jsonwebtoken';
-import userModel from '../dao/models/users.js';
-import { createHash } from '../utils.js'
 import passport from "passport";
-import config from '../config/config.js';
 
-const ADMIN_EMAIL = config.adminEmail;
 
 const router = Router();
 
-router.post('/register', async (req, res) => {
-    try {
-        const { first_name, last_name, email, age, password } = req.body;
-
-        // Verifica los campos obligatorios en la solicitud.
-        if (!first_name || !last_name || !email || !password) {
-            return res.status(400).json({ status: "error", error: "Missing required fields" });
+router.post('/register', (req, res, next) => {
+    passport.authenticate('register', (err, user, info) => {
+        if (err) {
+            console.error("Error de registro:", err);
+            return res.status(500).json({ status: "error", error: "Internal Server Error" });
         }
-
-        // Verifica si el "email" coincide con el usuario local "ADMIN_EMAIL"
-        if (email === ADMIN_EMAIL) {
-            return res.status(400).json({ status: "error", error: "User already exists" });
+        if (!user) {
+            return res.status(400).json({ status: "error", error: info.message });
         }
-
-        // Verifica si el "email" ya existe en la DB
-        const exists = await userModel.findOne({ email });
-        if (exists) {
-            return res.status(400).json({ status: "error", error: "User already exists" });
-        }
-
-        // Crea el usuario en la DB
-        const user = {
-            first_name,
-            last_name,
-            email,
-            age,
-            password: createHash(password)
-        }
-        const result = await userModel.create(user);
+        // Si el usuario se ha registrado con éxito
         return res.status(200).json({ status: "success", message: "User registered" });
-    } catch (error) {
-        console.error("User registration error:", error);
-        return res.status(500).json({ status: "error", error: "Internal Server Error" });
-    }
+    })(req, res, next);
 });
 
 router.post('/login', (req, res, next) => {

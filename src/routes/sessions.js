@@ -3,6 +3,9 @@ import jwt from 'jsonwebtoken';
 import userModel from '../dao/models/users.js';
 import { createHash } from '../utils.js'
 import passport from "passport";
+import config from '../config/config.js';
+
+const ADMIN_EMAIL = config.adminEmail;
 
 const router = Router();
 
@@ -13,6 +16,11 @@ router.post('/register', async (req, res) => {
         // Verifica los campos obligatorios en la solicitud.
         if (!first_name || !last_name || !email || !password) {
             return res.status(400).json({ status: "error", error: "Missing required fields" });
+        }
+
+        // Verifica si el "email" coincide con el usuario local "ADMIN_EMAIL"
+        if (email === ADMIN_EMAIL) {
+            return res.status(400).json({ status: "error", error: "User already exists" });
         }
 
         // Verifica si el "email" ya existe en la DB

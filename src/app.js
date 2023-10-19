@@ -8,6 +8,8 @@ import cookieParser from 'cookie-parser';
 import config from './config/config.js';
 import sessionsRouter from './routes/sessions.js';
 import viewsRouter from './routes/views.js';
+import passport from 'passport';
+import { initializePassport } from './config/passport.js';
 
 
 const MONGO_URL = config.mongoUrl
@@ -35,6 +37,10 @@ app.use(session({
 app.engine('handlebars', handlebars.engine());
 app.set('views', __dirname + '/views');
 app.set('view engine', 'handlebars');
+
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', viewsRouter);
 app.use('/api/sessions', sessionsRouter);

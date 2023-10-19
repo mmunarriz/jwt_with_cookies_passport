@@ -8,7 +8,7 @@ const authorization = (req, res, next) => {
     try {
         const data = jwt.verify(token, "t0k3nJwtS3cr3t");
         req.userEmail = data.email;
-        req.userRol = data.rol;
+        req.userRole = data.role;
         return next();
     } catch {
         return res.redirect('/login');
